@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SYNOHACK 2026"
+description = "The official SYNOHACK 2026 event website by Synovers Technologies, with event details, team registration, secure payment checkout, and organizer management."
+version = "1.0.0"
+id = "artifacts/synohack-2026"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18708
+
+[services.development]
+run = "pnpm --filter @workspace/synohack-2026 run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/synohack-2026", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/synohack-2026/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18708"
+BASE_PATH = "/"

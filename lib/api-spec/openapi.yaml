@@ -1,22 +1,24 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
-  version: 0.1.0
-  description: API specification
+  version: 0.2.0
+  description: Public and organizer API for SYNOHACK 2026.
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
-    description: Health operations
+  - name: public
+  - name: registrations
+  - name: payments
+  - name: contact
+  - name: admin
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,13 +26,718 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /public/event-settings:
+    get:
+      operationId: getPublicEventSettings
+      tags: [public]
+      summary: Get public event information and registration status
+      responses:
+        "200":
+          description: Public event settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublicEventSettings"
+  /public/faqs:
+    get:
+      operationId: getPublicFaqs
+      tags: [public]
+      summary: Get published FAQs
+      responses:
+        "200":
+          description: Published FAQs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FaqItem"
+  /public/announcements:
+    get:
+      operationId: getPublicAnnouncements
+      tags: [public]
+      summary: Get published announcements
+      responses:
+        "200":
+          description: Published announcements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Announcement"
+  /registrations:
+    post:
+      operationId: createRegistration
+      tags: [registrations]
+      summary: Create a pending team registration and Stripe Checkout session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegistrationInput"
+      responses:
+        "201":
+          description: Pending registration and checkout session created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationCreated"
+        "400":
+          description: Invalid registration
+        "409":
+          description: Registration is closed or duplicate
+        "503":
+          description: Payment checkout is not configured
+  /registrations/{registrationId}:
+    get:
+      operationId: getRegistration
+      tags: [registrations]
+      summary: Get a team's own registration using its private access token
+      parameters:
+        - name: registrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Registration-Token
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Registration summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationReceipt"
+        "401":
+          description: Invalid access token
+        "404":
+          description: Registration not found
+  /registrations/{registrationId}/verify-checkout:
+    post:
+      operationId: verifyRegistrationCheckout
+      tags: [registrations]
+      summary: Verify a returned Stripe Checkout session server-side
+      parameters:
+        - name: registrationId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Registration-Token
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CheckoutVerificationInput"
+      responses:
+        "200":
+          description: Current verified payment status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationReceipt"
+        "400":
+          description: Checkout session does not match this registration
+        "401":
+          description: Invalid access token
+        "503":
+          description: Payment verification is not configured
+  /payments/webhook:
+    post:
+      operationId: receiveStripeWebhook
+      tags: [payments]
+      summary: Receive and verify Stripe payment webhook events
+      description: Stripe sends a raw request body with a Stripe-Signature header.
+      parameters:
+        - name: Stripe-Signature
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Event accepted
+        "400":
+          description: Invalid signature or event
+  /contact:
+    post:
+      operationId: createContactMessage
+      tags: [contact]
+      summary: Submit a contact inquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactMessageInput"
+      responses:
+        "201":
+          description: Inquiry stored
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactMessageCreated"
+        "400":
+          description: Invalid message
+        "429":
+          description: Too many messages
+  /admin/dashboard:
+    get:
+      operationId: getAdminDashboard
+      tags: [admin]
+      summary: Get database-backed organizer dashboard metrics
+      security:
+        - clerkSession: []
+      responses:
+        "200":
+          description: Dashboard metrics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminDashboard"
+        "401":
+          description: Sign-in required
+        "403":
+          description: Organizer access required
+  /admin/registrations:
+    get:
+      operationId: getAdminRegistrations
+      tags: [admin]
+      summary: Search and page through registrations
+      security:
+        - clerkSession: []
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: domain
+          in: query
+          schema:
+            $ref: "#/components/schemas/HackathonDomain"
+        - name: paymentStatus
+          in: query
+          schema:
+            $ref: "#/components/schemas/PaymentStatus"
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum: [createdAt, teamName, paymentStatus, domain]
+        - name: sortOrder
+          in: query
+          schema:
+            type: string
+            enum: [asc, desc]
+      responses:
+        "200":
+          description: Registration page
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegistrationPage"
+        "401":
+          description: Sign-in required
+        "403":
+          description: Organizer access required
+  /admin/registrations/{registrationId}:
+    get:
+      operationId: getAdminRegistration
+      tags: [admin]
+      summary: View a registration's full details
+      security:
+        - clerkSession: []
+      parameters:
+        - name: registrationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Full registration record
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminRegistration"
+        "404":
+          description: Registration not found
+  /admin/payments:
+    get:
+      operationId: getAdminPayments
+      tags: [admin]
+      summary: List payment records
+      security:
+        - clerkSession: []
+      parameters:
+        - name: paymentStatus
+          in: query
+          schema:
+            $ref: "#/components/schemas/PaymentStatus"
+        - name: page
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+      responses:
+        "200":
+          description: Payment page
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentPage"
+  /admin/export:
+    get:
+      operationId: exportAdminRegistrations
+      tags: [admin]
+      summary: Export filtered registrations as CSV
+      security:
+        - clerkSession: []
+      parameters:
+        - name: domain
+          in: query
+          schema:
+            $ref: "#/components/schemas/HackathonDomain"
+        - name: paymentStatus
+          in: query
+          schema:
+            $ref: "#/components/schemas/PaymentStatus"
+      responses:
+        "200":
+          description: CSV file
+          content:
+            text/csv:
+              schema:
+                type: string
+  /admin/event-settings:
+    put:
+      operationId: updateAdminEventSettings
+      tags: [admin]
+      summary: Update editable event content and registration controls
+      security:
+        - clerkSession: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EventSettingsUpdate"
+      responses:
+        "200":
+          description: Updated public settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublicEventSettings"
+  /admin/faqs:
+    put:
+      operationId: updateAdminFaqs
+      tags: [admin]
+      summary: Replace the FAQ list
+      security:
+        - clerkSession: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FaqListUpdate"
+      responses:
+        "200":
+          description: Updated FAQs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FaqItem"
+  /admin/announcements:
+    post:
+      operationId: createAdminAnnouncement
+      tags: [admin]
+      summary: Publish an event announcement
+      security:
+        - clerkSession: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnnouncementInput"
+      responses:
+        "201":
+          description: Announcement published
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Announcement"
 components:
+  securitySchemes:
+    clerkSession:
+      type: apiKey
+      in: cookie
+      name: __session
   schemas:
     HealthStatus:
       type: object
       properties:
         status:
           type: string
+      required: [status]
+    HackathonDomain:
+      type: string
+      enum:
+        - AI & Machine Learning
+        - Cybersecurity & Privacy
+        - Healthcare & MedTech
+        - AgriTech & Sustainability
+    PaymentStatus:
+      type: string
+      enum: [Pending, Paid, Failed, Refunded]
+    TeamMemberInput:
+      type: object
+      required: [fullName, email, phone, department, yearOfStudy]
+      properties:
+        fullName: { type: string, minLength: 2, maxLength: 120 }
+        email: { type: string, format: email, maxLength: 254 }
+        phone: { type: string, minLength: 7, maxLength: 20 }
+        department: { type: string, minLength: 2, maxLength: 120 }
+        yearOfStudy: { type: integer, minimum: 1, maximum: 4 }
+    RegistrationInput:
+      type: object
       required:
-        - status
-
+        - teamName
+        - leaderName
+        - leaderEmail
+        - leaderPhone
+        - college
+        - department
+        - yearOfStudy
+        - members
+        - domain
+        - projectTitle
+        - problemStatement
+        - projectDescription
+        - confirmsAccuracy
+        - agreesToRules
+        - confirmsSoftwareDomain
+      properties:
+        teamName: { type: string, minLength: 2, maxLength: 100 }
+        leaderName: { type: string, minLength: 2, maxLength: 120 }
+        leaderEmail: { type: string, format: email, maxLength: 254 }
+        leaderPhone: { type: string, minLength: 7, maxLength: 20 }
+        college: { type: string, minLength: 2, maxLength: 160 }
+        department: { type: string, minLength: 2, maxLength: 120 }
+        yearOfStudy: { type: integer, minimum: 1, maximum: 4 }
+        members:
+          type: array
+          maxItems: 3
+          items:
+            $ref: "#/components/schemas/TeamMemberInput"
+        domain:
+          $ref: "#/components/schemas/HackathonDomain"
+        projectTitle: { type: string, minLength: 2, maxLength: 160 }
+        problemStatement: { type: string, minLength: 10, maxLength: 500 }
+        projectDescription: { type: string, minLength: 20, maxLength: 3000 }
+        confirmsAccuracy: { type: boolean, const: true }
+        agreesToRules: { type: boolean, const: true }
+        confirmsSoftwareDomain: { type: boolean, const: true }
+    RegistrationCreated:
+      type: object
+      required: [registrationId, accessToken, checkoutUrl, paymentStatus, amountPaise]
+      properties:
+        registrationId: { type: string }
+        accessToken: { type: string }
+        checkoutUrl: { type: string, format: uri }
+        paymentStatus:
+          $ref: "#/components/schemas/PaymentStatus"
+        amountPaise: { type: integer, const: 25000 }
+    CheckoutVerificationInput:
+      type: object
+      required: [checkoutSessionId]
+      properties:
+        checkoutSessionId: { type: string, minLength: 8 }
+    RegistrationReceipt:
+      type: object
+      required:
+        - registrationId
+        - teamName
+        - leaderName
+        - domain
+        - memberCount
+        - paymentStatus
+        - amountPaise
+        - createdAt
+      properties:
+        registrationId: { type: string }
+        teamName: { type: string }
+        leaderName: { type: string }
+        domain:
+          $ref: "#/components/schemas/HackathonDomain"
+        memberCount: { type: integer }
+        paymentStatus:
+          $ref: "#/components/schemas/PaymentStatus"
+        amountPaise: { type: integer }
+        createdAt: { type: string, format: date-time }
+    ContactMessageInput:
+      type: object
+      required: [fullName, email, phone, subject, message, website]
+      properties:
+        fullName: { type: string, minLength: 2, maxLength: 120 }
+        email: { type: string, format: email, maxLength: 254 }
+        phone: { type: string, minLength: 7, maxLength: 20 }
+        subject: { type: string, minLength: 3, maxLength: 160 }
+        message: { type: string, minLength: 10, maxLength: 3000 }
+        website:
+          type: string
+          maxLength: 0
+          description: Spam honeypot; must remain empty.
+    ContactMessageCreated:
+      type: object
+      required: [received]
+      properties:
+        received: { type: boolean, const: true }
+    PublicEventSettings:
+      type: object
+      required:
+        - eventName
+        - eventDate
+        - registrationDeadline
+        - timezone
+        - durationHours
+        - feePaise
+        - registrationOpen
+        - description
+        - eligibility
+        - rules
+        - timeline
+      properties:
+        eventName: { type: string }
+        eventDate: { type: string, format: date-time }
+        registrationDeadline: { type: string, format: date-time }
+        timezone: { type: string }
+        durationHours: { type: integer }
+        feePaise: { type: integer }
+        registrationOpen: { type: boolean }
+        description: { type: string }
+        eligibility: { type: string }
+        rules:
+          type: array
+          items: { type: string }
+        timeline:
+          type: array
+          items:
+            $ref: "#/components/schemas/TimelineItem"
+    EventSettingsUpdate:
+      type: object
+      required:
+        - description
+        - registrationDeadline
+        - registrationOpen
+        - eligibility
+        - rules
+        - timeline
+      properties:
+        description: { type: string, minLength: 10, maxLength: 3000 }
+        registrationDeadline: { type: string, format: date-time }
+        registrationOpen: { type: boolean }
+        eligibility: { type: string, minLength: 10, maxLength: 2000 }
+        rules:
+          type: array
+          maxItems: 40
+          items: { type: string, minLength: 5, maxLength: 500 }
+        timeline:
+          type: array
+          maxItems: 20
+          items:
+            $ref: "#/components/schemas/TimelineItem"
+    TimelineItem:
+      type: object
+      required: [date, title, detail]
+      properties:
+        date: { type: string, minLength: 3, maxLength: 80 }
+        title: { type: string, minLength: 2, maxLength: 120 }
+        detail: { type: string, minLength: 2, maxLength: 500 }
+    FaqItem:
+      type: object
+      required: [id, question, answer]
+      properties:
+        id: { type: string }
+        question: { type: string }
+        answer: { type: string }
+    FaqListUpdate:
+      type: object
+      required: [faqs]
+      properties:
+        faqs:
+          type: array
+          maxItems: 50
+          items:
+            $ref: "#/components/schemas/FaqInput"
+    FaqInput:
+      type: object
+      required: [question, answer]
+      properties:
+        question: { type: string, minLength: 4, maxLength: 300 }
+        answer: { type: string, minLength: 4, maxLength: 1500 }
+    AnnouncementInput:
+      type: object
+      required: [title, body]
+      properties:
+        title: { type: string, minLength: 3, maxLength: 160 }
+        body: { type: string, minLength: 5, maxLength: 3000 }
+    Announcement:
+      type: object
+      required: [id, title, body, publishedAt]
+      properties:
+        id: { type: string }
+        title: { type: string }
+        body: { type: string }
+        publishedAt: { type: string, format: date-time }
+    AdminDashboard:
+      type: object
+      required:
+        - totalRegistrations
+        - paidRegistrations
+        - pendingPayments
+        - failedPayments
+        - totalParticipants
+        - domainStats
+      properties:
+        totalRegistrations: { type: integer }
+        paidRegistrations: { type: integer }
+        pendingPayments: { type: integer }
+        failedPayments: { type: integer }
+        totalParticipants: { type: integer }
+        domainStats:
+          type: array
+          items:
+            $ref: "#/components/schemas/DomainStat"
+    DomainStat:
+      type: object
+      required: [domain, registrations]
+      properties:
+        domain:
+          $ref: "#/components/schemas/HackathonDomain"
+        registrations: { type: integer }
+    RegistrationRow:
+      type: object
+      required:
+        - registrationId
+        - teamName
+        - leaderName
+        - college
+        - domain
+        - memberCount
+        - paymentStatus
+        - createdAt
+      properties:
+        registrationId: { type: string }
+        teamName: { type: string }
+        leaderName: { type: string }
+        college: { type: string }
+        domain:
+          $ref: "#/components/schemas/HackathonDomain"
+        memberCount: { type: integer }
+        paymentStatus:
+          $ref: "#/components/schemas/PaymentStatus"
+        createdAt: { type: string, format: date-time }
+    RegistrationPage:
+      type: object
+      required: [items, page, pageSize, total]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/RegistrationRow"
+        page: { type: integer }
+        pageSize: { type: integer }
+        total: { type: integer }
+    AdminRegistration:
+      allOf:
+        - $ref: "#/components/schemas/RegistrationRow"
+        - type: object
+          required:
+            - leaderEmail
+            - leaderPhone
+            - department
+            - yearOfStudy
+            - members
+            - projectTitle
+            - problemStatement
+            - projectDescription
+          properties:
+            leaderEmail: { type: string, format: email }
+            leaderPhone: { type: string }
+            department: { type: string }
+            yearOfStudy: { type: integer }
+            members:
+              type: array
+              items:
+                $ref: "#/components/schemas/AdminMember"
+            projectTitle: { type: string }
+            problemStatement: { type: string }
+            projectDescription: { type: string }
+    AdminMember:
+      type: object
+      required: [fullName, email, phone, department, yearOfStudy]
+      properties:
+        fullName: { type: string }
+        email: { type: string, format: email }
+        phone: { type: string }
+        department: { type: string }
+        yearOfStudy: { type: integer }
+    PaymentRow:
+      type: object
+      required: [registrationId, amountPaise, status, createdAt]
+      properties:
+        registrationId: { type: string }
+        stripeCheckoutSessionId: { type: ["string", "null"] }
+        stripePaymentIntentId: { type: ["string", "null"] }
+        amountPaise: { type: integer }
+        status:
+          $ref: "#/components/schemas/PaymentStatus"
+        createdAt: { type: string, format: date-time }
+        paidAt: { type: ["string", "null"], format: date-time }
+    PaymentPage:
+      type: object
+      required: [items, page, pageSize, total]
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/PaymentRow"
+        page: { type: integer }
+        pageSize: { type: integer }
+        total: { type: integer }
