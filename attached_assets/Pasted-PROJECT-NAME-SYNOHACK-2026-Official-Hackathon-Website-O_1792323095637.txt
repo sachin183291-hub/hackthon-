@@ -1,0 +1,1505 @@
+PROJECT NAME:
+SYNOHACK 2026 — Official Hackathon Website
+
+ORGANIZATION:
+Synovers Technologies
+
+PROJECT TYPE:
+Full-Stack, Production-Ready Hackathon Website
+with Frontend, Backend, Database, Registration,
+Payment Integration, Admin Dashboard, and Email Notifications.
+
+==================================================
+1. PROJECT OBJECTIVE
+==================================================
+
+Build a complete, modern, professional, responsive,
+full-stack website for SYNOHACK 2026, organized by
+Synovers Technologies.
+
+Reference website:
+https://wizzhack26.netlify.app/
+
+First, inspect the reference website and understand
+its information architecture, navigation, hero section,
+event information, registration flow, rules, FAQ,
+and contact sections.
+
+Use it as inspiration for the website structure and
+user experience.
+
+Do not copy its branding, logo, text, or exact design.
+
+Create an original, premium corporate identity for
+Synovers Technologies.
+
+The final result must look like a professional technology
+company's official hackathon website, not a basic
+college project or a generic template.
+
+Build the actual working application, not just a visual
+mockup.
+
+==================================================
+2. COMPANY BRANDING
+==================================================
+
+Company Name:
+Synovers Technologies
+
+Tagline:
+Dream it.. Do it..
+
+Official Website:
+www.synovers.com
+
+Contact Email:
+info@synovers.com
+
+Contact Numbers:
++91 7358096768
++91 9344626768
+
+Hackathon Name:
+SYNOHACK 2026
+
+Main Event Title:
+ONLINE OPEN-STATEMENT SOFTWARE HACKATHON
+
+Main Tagline:
+Turn Ideas into Impact
+
+Supporting Tagline:
+Code. Collaborate. Create. Compete.
+
+Additional Brand Message:
+Innovate. Collaborate. Grow Together.
+
+Use the Synovers Technologies logo if an official
+logo file is provided.
+
+Do not invent or recreate an inaccurate company logo
+when the actual logo asset is available.
+
+If no logo file is provided, create a clean text-based
+brand treatment that can later be replaced with the
+official logo.
+
+==================================================
+3. DESIGN SYSTEM AND VISUAL STYLE
+==================================================
+
+Create a premium corporate technology design.
+
+Primary Colors:
+- Deep Navy: #07182B
+- Dark Blue: #0B2340
+- Synovers Green: #65D52A
+- White: #FFFFFF
+- Light Gray: #F4F7FA
+- Accent Blue: #1684FF
+- Gold accents for winning teams and career opportunities
+
+Design Requirements:
+
+1. Premium technology-company appearance.
+2. Clean, structured, professional layout.
+3. Modern typography and strong visual hierarchy.
+4. Smooth scrolling and subtle animations.
+5. Professional cards with consistent spacing.
+6. Elegant gradients and subtle background patterns.
+7. Carefully designed icons.
+8. Responsive navigation bar.
+9. High-quality laptop, coding, and technology visuals.
+10. Excellent readability on mobile devices.
+11. Consistent branding across every page.
+12. Professional footer with company contact details.
+
+Avoid:
+- Excessive animations.
+- Too many colors.
+- Overcrowded layouts.
+- Random stock images.
+- Fake statistics.
+- Fake testimonials.
+- Unverified sponsors.
+- Unverified government approvals.
+- Placeholder content presented as real information.
+
+Use a consistent design system throughout the application.
+
+==================================================
+4. TECHNOLOGY STACK
+==================================================
+
+Build a real full-stack application.
+
+Frontend:
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- React Router
+- Lucide React icons
+- Framer Motion for subtle animations
+
+Backend:
+- Node.js
+- Express.js
+- TypeScript
+- REST API
+
+Database:
+- MongoDB Atlas
+- Mongoose
+
+Authentication:
+- Secure administrator authentication.
+- Protected admin routes.
+- Server-side authorization.
+
+Form Validation:
+- React Hook Form
+- Zod validation
+
+Email Notifications:
+- Nodemailer with SMTP configuration.
+
+Payment:
+- Razorpay integration using server-side payment
+  order creation and payment verification.
+
+Deployment Compatibility:
+- Vercel for the frontend.
+- Render for the backend.
+- MongoDB Atlas for the database.
+
+Use environment variables for all secrets.
+
+Never expose database credentials, API secrets,
+SMTP passwords, or payment secrets in frontend code.
+
+If the development platform has a supported integrated
+database or server-side environment, use it where
+appropriate while preserving the requirements above.
+
+Do not build a fake backend using localStorage.
+
+All registration, payment, authentication, and
+administrative operations must use the backend API.
+
+==================================================
+5. WEBSITE NAVIGATION
+==================================================
+
+Create a responsive navigation bar containing:
+
+- Home
+- About
+- Domains
+- Event Details
+- Eligibility
+- Rules
+- Prizes & Opportunities
+- FAQ
+- Contact
+
+Add a prominent green "Register Now" button.
+
+The navigation should:
+- Work on desktop and mobile.
+- Have a mobile hamburger menu.
+- Scroll to the correct sections.
+- Highlight the active section where appropriate.
+- Remain accessible when navigating by keyboard.
+
+Use a sticky navigation bar with a subtle backdrop effect.
+
+==================================================
+6. HERO SECTION
+==================================================
+
+Create a visually impressive hero section.
+
+Display:
+
+SYNOHACK 2026
+
+ONLINE OPEN-STATEMENT
+SOFTWARE HACKATHON
+
+Organized by Synovers Technologies
+
+8 HOURS NON-STOP HACKATHON
+
+15 NOVEMBER 2026
+
+100% ONLINE
+
+TEAM SIZE: UP TO 4 MEMBERS
+
+REGISTRATION FEE: ₹250 PER TEAM
+
+Main Heading:
+Turn Ideas into Impact.
+
+Supporting Text:
+
+"An online software hackathon where students can
+transform innovative ideas into practical software
+solutions, collaborate with talented peers, and
+showcase their technical skills."
+
+Primary CTA:
+REGISTER YOUR TEAM
+
+Secondary CTA:
+EXPLORE DOMAINS
+
+Display a countdown timer for the event.
+
+Registration Deadline:
+13 November 2026.
+
+The countdown must use the actual event date and
+Indian Standard Time.
+
+Do not hardcode a countdown that resets on refresh.
+
+After the event begins, change the countdown message
+appropriately.
+
+Once the registration deadline passes, disable new
+registrations unless an administrator explicitly
+reopens registration.
+
+Use a premium laptop-and-code visual on the right side
+of the desktop hero.
+
+On mobile, stack the content vertically.
+
+==================================================
+7. ABOUT SYNOHACK
+==================================================
+
+Section Title:
+About SYNOHACK 2026
+
+Content:
+
+"SYNOHACK 2026 is an online open-statement software
+hackathon organized by Synovers Technologies.
+
+The event encourages students to identify meaningful
+problems, develop innovative software solutions, and
+demonstrate their technical and creative abilities.
+
+Participants can propose their own problem statements,
+provided their projects belong to one of the four
+official hackathon domains.
+
+The event is designed to encourage innovation,
+collaboration, practical development, and learning."
+
+Highlight:
+
+- Open-Statement Format
+- Four Technology Domains
+- Eight Hours of Development
+- Fully Online Participation
+- Internship and Career Opportunity Consideration
+  for the Top Three Winning Teams
+
+Do not claim that the event is government-organized
+or government-approved.
+
+==================================================
+8. HACKATHON DOMAINS
+==================================================
+
+Display exactly FOUR domains.
+
+Do not add additional domains.
+
+Use four professional cards with large icons,
+domain titles, and subtle hover effects.
+
+DOMAIN 01:
+AI & MACHINE LEARNING
+
+DOMAIN 02:
+CYBERSECURITY & PRIVACY
+
+DOMAIN 03:
+HEALTHCARE & MEDTECH
+
+DOMAIN 04:
+AGRITECH & SUSTAINABILITY
+
+IMPORTANT RULE:
+
+Participants can choose their own problem statement.
+
+However, every project must belong to one of the
+four specified domains.
+
+Only software development projects are allowed.
+
+Do not include hardware-only projects.
+
+Provide a visually clear statement:
+
+"Choose Your Own Problem Statement.
+Build Within One of the Four Official Domains.
+Software Projects Only."
+
+Keep the domain section clean and professional.
+
+==================================================
+9. EVENT DETAILS
+==================================================
+
+Create an attractive event information section.
+
+Display the following information accurately:
+
+EVENT:
+SYNOHACK 2026
+
+EVENT DATE:
+Sunday, 15 November 2026
+
+DURATION:
+8 Hours — Non-Stop
+
+MODE:
+100% Online
+
+REGISTRATION DEADLINE:
+13 November 2026
+
+REGISTRATION FEE:
+₹250 per TEAM
+
+TEAM SIZE:
+Maximum 4 Members per Team
+
+ELIGIBILITY:
+Students from First Year to Fourth Year.
+
+Do not change the fee to ₹250 per participant.
+
+The fee is ₹250 for the entire team.
+
+Display all information using responsive cards.
+
+==================================================
+10. ELIGIBILITY
+==================================================
+
+Section Title:
+Who Can Participate?
+
+Main Message:
+
+"SYNOHACK 2026 welcomes eligible students from
+First Year to Fourth Year."
+
+Eligibility includes students currently studying
+in the first, second, third, or fourth year of
+their academic program.
+
+Team Requirements:
+
+- Maximum 4 members per team.
+- Registration must be completed by the team.
+- One team must have one designated team leader.
+- All team members must provide accurate details.
+- Every project must belong to one of the four
+  official domains.
+- Only software development projects are eligible.
+
+Do not invent restrictions regarding colleges,
+branches, or inter-college teams.
+
+If an eligibility condition has not been confirmed
+by the organizers, mark it for administrator
+configuration rather than presenting it as a rule.
+
+==================================================
+11. REGISTRATION SYSTEM
+==================================================
+
+Build a complete team registration system.
+
+Create a dedicated route:
+
+/register
+
+The registration form must contain the following.
+
+SECTION A — TEAM INFORMATION
+
+- Team Name
+- Team Leader Name
+- Team Leader Email
+- Team Leader Phone Number
+- College / Institution Name
+- Department / Branch
+- Current Year of Study
+
+SECTION B — TEAM MEMBERS
+
+Allow the team leader to add up to three additional
+members, making a maximum team size of four.
+
+For each additional member, collect:
+
+- Full Name
+- Email Address
+- Phone Number
+- Department / Branch
+- Current Year of Study
+
+The team leader counts as one of the four members.
+
+Allow teams with fewer than four members if permitted
+by the configured registration rules.
+
+SECTION C — PROJECT INFORMATION
+
+- Selected Domain
+- Proposed Project Title
+- Short Problem Statement
+- Project Description
+
+Domain dropdown must contain only:
+
+1. AI & Machine Learning
+2. Cybersecurity & Privacy
+3. Healthcare & MedTech
+4. AgriTech & Sustainability
+
+Do not require a completed project during registration.
+
+SECTION D — AGREEMENTS
+
+Add checkboxes for:
+
+- I confirm that the information provided is accurate.
+- I agree to follow the hackathon rules.
+- I understand that only software projects within
+  the four official domains are eligible.
+
+Include a link to the Privacy Policy and Terms.
+
+SECTION E — SUBMISSION
+
+Display:
+
+Registration Fee: ₹250 per Team
+
+Button:
+CONTINUE TO PAYMENT
+
+Validate all required fields.
+
+Show clear field-level error messages.
+
+Prevent duplicate submissions caused by repeated clicks.
+
+Store registration data securely in MongoDB.
+
+Generate a unique registration ID for each team.
+
+Example format:
+
+SYN26-XXXXXXXX
+
+The registration ID must be generated securely
+and must be unique in the database.
+
+After registration, display a confirmation page
+with the registration ID and payment status.
+
+==================================================
+12. PAYMENT INTEGRATION
+==================================================
+
+Implement Razorpay payment integration.
+
+Registration Fee:
+₹250 per Team
+
+Required flow:
+
+1. Team submits the registration form.
+2. Backend validates the submitted information.
+3. Backend creates a pending registration.
+4. Backend creates a Razorpay order for ₹250.
+5. Frontend opens the Razorpay checkout.
+6. User completes payment.
+7. Backend verifies the payment signature.
+8. Backend validates the payment amount and order.
+9. Backend updates the registration payment status.
+10. Confirmation email is sent after successful
+    payment verification.
+
+Use integer paise for Razorpay amounts.
+
+₹250 must be represented as 25000 paise.
+
+Never mark a registration as paid merely because
+the browser reports successful payment.
+
+Verify payment server-side.
+
+Implement webhook verification using the configured
+Razorpay webhook secret.
+
+Make webhook processing idempotent so repeated
+webhook deliveries do not create duplicate payments.
+
+Store payment references and status.
+
+Possible statuses:
+
+- Pending
+- Paid
+- Failed
+- Refunded
+
+Do not store card numbers, CVV values, or other
+sensitive payment credentials.
+
+If Razorpay credentials have not been supplied,
+implement a clearly marked TEST MODE configuration.
+
+Do not pretend that real payments are active until
+the organizer configures valid credentials.
+
+Do not create a fake payment-success screen that
+marks users as paid.
+
+==================================================
+13. REGISTRATION SUCCESS PAGE
+==================================================
+
+Create a dedicated route:
+
+/registration-success
+
+After successful payment, display:
+
+"REGISTRATION SUCCESSFUL"
+
+"Welcome to SYNOHACK 2026!"
+
+Display:
+
+- Registration ID
+- Team Name
+- Team Leader
+- Selected Domain
+- Number of Team Members
+- Payment Status
+- Amount Paid
+- Registration Date
+
+Add buttons:
+
+- Download Registration Confirmation
+- Return to Home
+
+Allow the team leader to receive a confirmation email.
+
+Do not expose private details belonging to other teams.
+
+==================================================
+14. TOP THREE WINNING TEAMS
+==================================================
+
+Create a premium dark navy and gold section.
+
+Section Heading:
+
+TOP 3 WINNING TEAMS
+
+Main Message:
+
+"Internship Opportunities & Career Job Opportunities"
+
+Supporting Text:
+
+"The Top Three Winning Teams will be considered
+for internship opportunities and career job
+opportunities at Synovers Technologies, subject
+to eligibility, role availability, and the
+company's selection process."
+
+Use three visual winner cards:
+
+- 1st Place
+- 2nd Place
+- 3rd Place
+
+Use professional trophy and achievement icons.
+
+IMPORTANT:
+
+Do not invent cash prize amounts.
+
+Do not promise guaranteed employment.
+
+Do not claim that every member automatically receives
+a job or internship.
+
+The website must accurately communicate that
+opportunities are subject to selection and availability.
+
+Add supporting benefits:
+
+- Industry Exposure
+- Practical Project Experience
+- Mentorship Opportunities
+- Professional Networking
+- Certificate for Participants, subject to the
+  organizer's confirmed certificate policy
+
+==================================================
+15. HACKATHON RULES
+==================================================
+
+Create a dedicated Rules & Guidelines section.
+
+Include these confirmed rules:
+
+1. The event is conducted completely online.
+2. The hackathon duration is eight hours.
+3. Registration fee is ₹250 per team.
+4. Maximum team size is four members.
+5. First-year to fourth-year students are eligible.
+6. Projects must belong to one of the four official
+   hackathon domains.
+7. Only software development projects are allowed.
+8. Participants may choose their own problem statement.
+9. Registration must be completed before the deadline.
+10. Participants must provide accurate registration data.
+11. Participants must comply with the organizer's
+    published instructions.
+
+Do not invent unconfirmed rules regarding:
+
+- College restrictions
+- Team member college combinations
+- Intellectual property ownership
+- Refund policy
+- AI tool usage
+- Project originality declarations
+- Evaluation weights
+- Judging criteria
+- Final submission deadlines
+- Presentation formats
+
+If additional rules are required, create an
+administrator-editable section for publishing them.
+
+==================================================
+16. HACKATHON TIMELINE
+==================================================
+
+Create a professional timeline section.
+
+Confirmed information:
+
+13 November 2026:
+Registration Deadline
+
+15 November 2026:
+SYNOHACK 2026 — Eight-Hour Online Hackathon
+
+Do not invent exact event start or end times.
+
+The organizers will provide the detailed schedule.
+
+Display this note:
+
+"Detailed event instructions and the final schedule
+will be communicated to registered participants."
+
+Allow the administrator to update timeline entries.
+
+==================================================
+17. FREQUENTLY ASKED QUESTIONS
+==================================================
+
+Create an interactive FAQ section using accordions.
+
+Include the following questions.
+
+Q1. What is SYNOHACK 2026?
+
+A. An eight-hour online open-statement software
+hackathon organized by Synovers Technologies.
+
+Q2. Who can participate?
+
+A. Eligible students from First Year to Fourth Year.
+
+Q3. What is the registration fee?
+
+A. ₹250 per team.
+
+Q4. What is the maximum team size?
+
+A. Four members per team.
+
+Q5. Is this an online or offline event?
+
+A. The hackathon is conducted 100% online.
+
+Q6. What are the available domains?
+
+A. AI & Machine Learning, Cybersecurity & Privacy,
+Healthcare & MedTech, and AgriTech & Sustainability.
+
+Q7. Can we choose our own problem statement?
+
+A. Yes. Teams can choose their own problem statement,
+but it must belong to one of the four official domains.
+
+Q8. Are hardware-only projects allowed?
+
+A. No. Only software development projects are allowed.
+
+Q9. What is the registration deadline?
+
+A. 13 November 2026.
+
+Q10. What opportunities are available for winners?
+
+A. The top three winning teams will be considered
+for internship and career job opportunities at
+Synovers Technologies, subject to selection and
+availability.
+
+Q11. How can we contact the organizers?
+
+A. Call +91 7358096768 or +91 9344626768,
+or email info@synovers.com.
+
+Use accessible accordions and ensure that each
+question and answer is easy to read on mobile.
+
+==================================================
+18. CONTACT SECTION
+==================================================
+
+Section Heading:
+Get in Touch
+
+Company:
+Synovers Technologies
+
+Phone:
++91 7358096768
++91 9344626768
+
+Email:
+info@synovers.com
+
+Website:
+www.synovers.com
+
+Include:
+
+- Click-to-call phone links.
+- Clickable email link.
+- Official website link.
+- Social media links only when the organizer
+  provides the actual profile URLs.
+- A contact form.
+
+Contact Form Fields:
+
+- Full Name
+- Email
+- Phone Number
+- Subject
+- Message
+
+Validate the form on both frontend and backend.
+
+Store contact inquiries in the database.
+
+If email delivery is configured, send a notification
+to the organizer and a confirmation to the sender.
+
+Add spam protection and request rate limiting.
+
+Do not invent social media profile URLs.
+
+==================================================
+19. ADMIN DASHBOARD
+==================================================
+
+Build a separate secure administrator dashboard.
+
+Route:
+
+/admin
+
+The dashboard must not be publicly accessible
+without authentication.
+
+Required modules:
+
+A. DASHBOARD OVERVIEW
+
+Display:
+
+- Total Registrations
+- Paid Registrations
+- Pending Payments
+- Failed Payments
+- Total Registered Participants
+- Domain-wise Registration Statistics
+
+Calculate these values from actual database records.
+
+Do not use fake demo statistics in production.
+
+B. REGISTRATION MANAGEMENT
+
+Display registrations in a searchable table.
+
+Columns:
+
+- Registration ID
+- Team Name
+- Team Leader
+- College
+- Selected Domain
+- Member Count
+- Payment Status
+- Registration Date
+
+Features:
+
+- Search
+- Filter by domain
+- Filter by payment status
+- Sort
+- Pagination
+- View registration details
+- Export CSV
+
+C. PAYMENT MANAGEMENT
+
+Display:
+
+- Registration ID
+- Razorpay Order ID
+- Payment ID
+- Amount
+- Payment Status
+- Payment Date
+
+Only verified payment information may be shown
+as successfully paid.
+
+D. EVENT CONTENT MANAGEMENT
+
+Allow administrators to update:
+
+- Event description
+- Event dates
+- Registration deadline
+- Domains
+- Eligibility information
+- Rules
+- FAQs
+- Contact details
+- Registration availability
+- Announcements
+- Timeline
+
+E. REGISTRATION CONTROL
+
+Allow administrators to:
+
+- Open registration.
+- Close registration.
+- Reopen registration when required.
+- View team details.
+- Send announcements to registered participants.
+
+Require confirmation before destructive actions.
+
+F. SECURITY
+
+- Hash administrator passwords.
+- Protect API routes.
+- Use secure session or token handling.
+- Apply rate limiting.
+- Validate permissions on the server.
+- Never store administrator passwords in plaintext.
+- Never expose secrets in API responses.
+
+Provide a secure process for creating the first
+administrator account.
+
+Do not hardcode production administrator credentials.
+
+==================================================
+20. EMAIL NOTIFICATIONS
+==================================================
+
+Use configurable SMTP settings.
+
+Required emails:
+
+1. Registration received.
+2. Payment confirmation.
+3. Registration ID confirmation.
+4. Registration-related organizer notification.
+5. Event schedule announcement.
+6. Important organizer announcements.
+
+Create professional HTML email templates matching
+the Synovers Technologies branding.
+
+Include:
+
+- SYNOHACK 2026 branding.
+- Registration ID when applicable.
+- Team name.
+- Relevant event information.
+- Contact information.
+
+Send payment confirmation only after successful
+server-side payment verification.
+
+Log email delivery failures safely.
+
+Do not expose SMTP credentials.
+
+==================================================
+21. REGISTRATION CLOSING LOGIC
+==================================================
+
+Use the registration deadline:
+
+13 November 2026.
+
+The event date is:
+
+15 November 2026.
+
+Use Asia/Kolkata as the event timezone.
+
+The backend must enforce the deadline.
+
+Do not rely exclusively on a frontend countdown.
+
+When the deadline passes:
+
+- Disable new registration submissions.
+- Display "REGISTRATION CLOSED".
+- Prevent the creation of new payment orders
+  for new registrations.
+- Preserve existing registrations and payment records.
+- Allow administrators to reopen registration
+  when necessary.
+
+Store all dates in a consistent format and handle
+timezone conversion correctly.
+
+==================================================
+22. DATABASE DESIGN
+==================================================
+
+Create appropriate database models.
+
+Required collections:
+
+1. Registrations
+2. Payments
+3. Administrators
+4. ContactMessages
+5. EventSettings
+6. Announcements
+7. EmailLogs, if appropriate
+
+Registration model fields should include:
+
+- Unique registration ID
+- Team information
+- Team leader details
+- Team member details
+- College and department
+- Selected domain
+- Project details
+- Payment status
+- Registration status
+- Payment references
+- Created timestamp
+- Updated timestamp
+
+Create indexes for:
+
+- Registration ID
+- Team leader email
+- Payment references
+- Registration status
+- Domain
+
+Prevent duplicate payment processing.
+
+Use appropriate database validation.
+
+Never expose private participant information
+through public API endpoints.
+
+==================================================
+23. USER EXPERIENCE
+==================================================
+
+Create a polished experience with:
+
+- Smooth navigation.
+- Loading indicators.
+- Clear success messages.
+- Clear error messages.
+- Form progress indicators where appropriate.
+- Responsive buttons.
+- Empty states.
+- Confirmation dialogs.
+- Accessible form labels.
+- Keyboard navigation.
+- Proper color contrast.
+- Helpful validation messages.
+
+The site must be fully usable on:
+
+- Android phones
+- iPhones
+- Tablets
+- Laptops
+- Desktop computers
+
+Test the layout at common mobile, tablet,
+and desktop widths.
+
+Avoid horizontal overflow.
+
+Do not sacrifice mobile usability for desktop effects.
+
+==================================================
+24. FOOTER
+==================================================
+
+Create a professional corporate footer.
+
+Display:
+
+Synovers Technologies
+
+Dream it.. Do it..
+
+SYNOHACK 2026
+
+www.synovers.com
+
+info@synovers.com
+
++91 7358096768
++91 9344626768
+
+Footer Links:
+
+- Home
+- Domains
+- Eligibility
+- Rules
+- FAQ
+- Contact
+- Privacy Policy
+- Terms & Conditions
+
+Copyright:
+
+© 2026 Synovers Technologies.
+All Rights Reserved.
+
+Do not add fake social links.
+
+==================================================
+25. PRIVACY AND TERMS PAGES
+==================================================
+
+Create separate routes:
+
+/privacy
+/terms
+
+Privacy Policy should explain the collection and
+processing of registration data, contact information,
+payment references, and email notifications.
+
+Terms & Conditions should explain the published
+registration requirements, event participation,
+payment handling, and applicable event rules.
+
+Do not invent a refund policy.
+
+Mark any policy that requires organizer approval
+as a draft until it is reviewed and approved.
+
+Do not claim legal compliance has been independently
+verified.
+
+==================================================
+26. SEO AND PERFORMANCE
+==================================================
+
+Implement:
+
+- Page title and meta description.
+- Open Graph metadata.
+- Social sharing preview.
+- Favicon.
+- Semantic HTML.
+- Sitemap.
+- robots.txt.
+- Appropriate image alt text.
+- Optimized images.
+- Lazy loading where appropriate.
+- Production build optimization.
+- Clean URLs.
+- Appropriate error pages.
+
+Suggested page title:
+
+SYNOHACK 2026 | Online Software Hackathon
+by Synovers Technologies
+
+Suggested description:
+
+Join SYNOHACK 2026, an eight-hour online open-statement
+software hackathon by Synovers Technologies. Explore
+four technology domains, register your team, and turn
+your ideas into impact.
+
+Do not claim guaranteed search rankings.
+
+==================================================
+27. BACKEND API REQUIREMENTS
+==================================================
+
+Create documented REST API endpoints.
+
+Suggested routes:
+
+POST /api/registrations
+GET /api/registrations/:registrationId
+POST /api/payments/create-order
+POST /api/payments/verify
+POST /api/payments/webhook
+
+POST /api/contact
+
+POST /api/admin/login
+POST /api/admin/logout
+GET /api/admin/dashboard
+GET /api/admin/registrations
+GET /api/admin/registrations/:id
+GET /api/admin/payments
+GET /api/admin/export
+
+GET /api/public/event-settings
+GET /api/public/faqs
+GET /api/public/announcements
+
+Create additional routes where necessary.
+
+All endpoints must have appropriate validation,
+authentication, authorization, error handling,
+and rate limiting.
+
+Do not expose sensitive data in public endpoints.
+
+Generate API documentation for the backend.
+
+==================================================
+28. SECURITY REQUIREMENTS
+==================================================
+
+Implement:
+
+- Server-side input validation.
+- Secure authentication.
+- Authorization checks.
+- Password hashing.
+- CORS configuration.
+- Rate limiting.
+- Secure HTTP headers.
+- Safe database queries.
+- Payment signature verification.
+- Webhook signature verification.
+- Environment variable validation.
+- Safe error responses.
+- Protection against duplicate submissions.
+- Appropriate file upload restrictions if uploads
+  are introduced later.
+
+Do not include API secrets in source control.
+
+Provide an .env.example containing variable names
+and example placeholder values only.
+
+==================================================
+29. PROJECT STRUCTURE
+==================================================
+
+Organize the codebase cleanly.
+
+Suggested structure:
+
+synohack-2026/
+  frontend/
+    src/
+      components/
+      pages/
+      sections/
+      layouts/
+      hooks/
+      services/
+      types/
+      utils/
+      assets/
+    public/
+    package.json
+    vite.config.ts
+    tailwind.config.ts
+
+  backend/
+    src/
+      config/
+      controllers/
+      middleware/
+      models/
+      routes/
+      services/
+      validators/
+      utils/
+      app.ts
+      server.ts
+    package.json
+
+  docs/
+    API.md
+    DEPLOYMENT.md
+
+  .env.example
+  README.md
+
+You may improve the structure if the chosen
+framework requires a different organization.
+
+==================================================
+30. REQUIRED PAGES
+==================================================
+
+Implement these routes:
+
+/
+  Main landing page.
+
+/register
+  Team registration and payment initiation.
+
+/registration-success
+  Registration confirmation.
+
+/faq
+  Frequently asked questions.
+
+/rules
+  Hackathon rules and guidelines.
+
+/privacy
+  Privacy policy.
+
+/terms
+  Terms and conditions.
+
+/contact
+  Contact form.
+
+/admin/login
+  Administrator login.
+
+/admin
+  Protected dashboard.
+
+/admin/registrations
+  Registration management.
+
+/admin/payments
+  Payment management.
+
+/admin/settings
+  Event settings and content management.
+
+All navigation links must work.
+
+Do not create buttons that lead nowhere.
+
+==================================================
+31. REQUIRED FUNCTIONAL TESTING
+==================================================
+
+Before considering the application complete,
+test the following:
+
+1. The home page loads successfully.
+2. All navigation links work.
+3. Mobile navigation works.
+4. The countdown displays correctly.
+5. Registration form validation works.
+6. Teams cannot exceed four members.
+7. Only the four official domains are selectable.
+8. Registration IDs are unique.
+9. Registration data is stored in MongoDB.
+10. Duplicate submissions are handled safely.
+11. Payment orders are created on the backend.
+12. Payment verification is performed securely.
+13. Unverified payments are never marked as paid.
+14. Registration deadline enforcement works.
+15. Admin authentication works.
+16. Unauthorized users cannot access admin APIs.
+17. Registration search and filters work.
+18. CSV export works.
+19. Email templates render correctly.
+20. API errors are handled properly.
+21. No private keys are exposed in frontend bundles.
+22. Production build completes successfully.
+23. The deployed frontend can communicate with
+    the deployed backend.
+24. All environment variables are documented.
+25. No essential buttons or forms are nonfunctional.
+
+Use test credentials and test payment mode during
+development.
+
+Do not make real payments during automated testing.
+
+==================================================
+32. DEPLOYMENT REQUIREMENTS
+==================================================
+
+Prepare the project for deployment.
+
+Frontend:
+Vercel
+
+Backend:
+Render
+
+Database:
+MongoDB Atlas
+
+Payment:
+Razorpay
+
+Email:
+SMTP provider configured by the organizer.
+
+Create:
+
+- README.md
+- .env.example
+- Deployment instructions
+- Database setup instructions
+- Payment configuration instructions
+- Email configuration instructions
+- Administrator setup instructions
+- Production build commands
+- Troubleshooting guide
+
+Document environment variables such as:
+
+MONGODB_URI=
+JWT_SECRET=
+FRONTEND_URL=
+BACKEND_URL=
+RAZORPAY_KEY_ID=
+RAZORPAY_KEY_SECRET=
+RAZORPAY_WEBHOOK_SECRET=
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASSWORD=
+EMAIL_FROM=
+ADMIN_SETUP_SECRET=
+
+Use secure values supplied through the deployment
+platform's environment configuration.
+
+Do not generate or invent real API credentials.
+
+If any external service requires credentials,
+clearly explain which credentials must be supplied
+before that functionality can go live.
+
+==================================================
+33. FINAL DELIVERY REQUIREMENTS
+==================================================
+
+Build the complete working project.
+
+Do not stop after creating the hero section.
+
+Do not deliver only a static frontend.
+
+Do not create a fake registration system.
+
+Do not pretend that payments, emails, or the database
+are connected when they are not.
+
+Create the actual frontend, backend, database models,
+API endpoints, registration flow, payment integration,
+admin dashboard, and deployment documentation.
+
+Run the available checks and fix build errors.
+
+Provide a concise final report containing:
+
+1. Features implemented.
+2. Pages and routes created.
+3. Technology stack used.
+4. Database configuration steps.
+5. Payment setup steps.
+6. Email configuration steps.
+7. Local development commands.
+8. Deployment instructions.
+9. Remaining configuration requirements.
+10. Any functionality that still requires credentials
+    or external service setup.
+
+The final website should feel like a premium,
+professional technology-company hackathon platform.
+
+Make it visually impressive, fully responsive,
+secure, maintainable, and ready for deployment
+after the organizer supplies the required credentials
+and verifies the event configuration.
+
+FINAL BRAND MESSAGE:
+
+SYNOHACK 2026
+TURN IDEAS INTO IMPACT.
+
+Organized by Synovers Technologies.
+Dream it.. Do it..
