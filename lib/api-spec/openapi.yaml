@@ -542,6 +542,10 @@ components:
         - eligibility
         - rules
         - timeline
+        - domains
+        - contactEmail
+        - contactPhones
+        - website
       properties:
         eventName: { type: string }
         eventDate: { type: string, format: date-time }
@@ -559,17 +563,32 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/TimelineItem"
+        domains:
+          type: array
+          items:
+            $ref: "#/components/schemas/DomainDetail"
+        contactEmail: { type: string, format: email }
+        contactPhones:
+          type: array
+          items: { type: string }
+        website: { type: string, format: uri }
     EventSettingsUpdate:
       type: object
       required:
         - description
+        - eventDate
         - registrationDeadline
         - registrationOpen
         - eligibility
         - rules
         - timeline
+        - domains
+        - contactEmail
+        - contactPhones
+        - website
       properties:
         description: { type: string, minLength: 10, maxLength: 3000 }
+        eventDate: { type: string, format: date-time }
         registrationDeadline: { type: string, format: date-time }
         registrationOpen: { type: boolean }
         eligibility: { type: string, minLength: 10, maxLength: 2000 }
@@ -582,6 +601,19 @@ components:
           maxItems: 20
           items:
             $ref: "#/components/schemas/TimelineItem"
+        domains:
+          type: array
+          minItems: 4
+          maxItems: 4
+          items:
+            $ref: "#/components/schemas/DomainDetail"
+        contactEmail: { type: string, format: email }
+        contactPhones:
+          type: array
+          minItems: 2
+          maxItems: 2
+          items: { type: string, minLength: 7, maxLength: 20 }
+        website: { type: string, format: uri }
     TimelineItem:
       type: object
       required: [date, title, detail]
@@ -596,6 +628,13 @@ components:
         id: { type: string }
         question: { type: string }
         answer: { type: string }
+    DomainDetail:
+      type: object
+      required: [name, description]
+      properties:
+        name:
+          $ref: "#/components/schemas/HackathonDomain"
+        description: { type: string }
     FaqListUpdate:
       type: object
       required: [faqs]

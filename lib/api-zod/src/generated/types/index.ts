@@ -14,6 +14,7 @@ export * from './announcementInput';
 export * from './checkoutVerificationInput';
 export * from './contactMessageCreated';
 export * from './contactMessageInput';
+export * from './domainDetail';
 export * from './domainStat';
 export * from './eventSettingsUpdate';
 export * from './exportAdminRegistrationsParams';

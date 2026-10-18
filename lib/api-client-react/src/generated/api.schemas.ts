@@ -187,6 +187,11 @@ export interface TimelineItem {
   detail: string;
 }
 
+export interface DomainDetail {
+  name: HackathonDomain;
+  description: string;
+}
+
 export interface PublicEventSettings {
   eventName: string;
   eventDate: string;
@@ -199,6 +204,10 @@ export interface PublicEventSettings {
   eligibility: string;
   rules: string[];
   timeline: TimelineItem[];
+  domains: DomainDetail[];
+  contactEmail: string;
+  contactPhones: string[];
+  website: string;
 }
 
 export interface EventSettingsUpdate {
@@ -207,6 +216,7 @@ export interface EventSettingsUpdate {
      * @maxLength 3000
      */
   description: string;
+  eventDate: string;
   registrationDeadline: string;
   registrationOpen: boolean;
   /**
@@ -222,6 +232,20 @@ export interface EventSettingsUpdate {
   rules: string[];
   /** @maxItems 20 */
   timeline: TimelineItem[];
+  /**
+     * @minItems 4
+     * @maxItems 4
+     */
+  domains: DomainDetail[];
+  contactEmail: string;
+  /**
+     * @minItems 2
+     * @maxItems 2
+     * @items.minLength 7
+     * @items.maxLength 20
+     */
+  contactPhones: string[];
+  website: string;
 }
 
 export interface FaqItem {

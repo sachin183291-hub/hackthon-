@@ -45,7 +45,14 @@ export const GetPublicEventSettingsResponse = zod.object({
   "date": zod.string().min(getPublicEventSettingsResponseTimelineItemDateMin).max(getPublicEventSettingsResponseTimelineItemDateMax),
   "title": zod.string().min(getPublicEventSettingsResponseTimelineItemTitleMin).max(getPublicEventSettingsResponseTimelineItemTitleMax),
   "detail": zod.string().min(getPublicEventSettingsResponseTimelineItemDetailMin).max(getPublicEventSettingsResponseTimelineItemDetailMax)
-}))
+})),
+  "domains": zod.array(zod.object({
+  "name": zod.enum(['AI & Machine Learning', 'Cybersecurity & Privacy', 'Healthcare & MedTech', 'AgriTech & Sustainability']),
+  "description": zod.string()
+})),
+  "contactEmail": zod.string().email(),
+  "contactPhones": zod.array(zod.string()),
+  "website": zod.string().url()
 })
 
 
@@ -408,10 +415,20 @@ export const updateAdminEventSettingsBodyTimelineItemDetailMax = 500;
 
 export const updateAdminEventSettingsBodyTimelineMax = 20;
 
+export const updateAdminEventSettingsBodyDomainsMin = 4;
+export const updateAdminEventSettingsBodyDomainsMax = 4;
+
+export const updateAdminEventSettingsBodyContactPhonesItemMin = 7;
+export const updateAdminEventSettingsBodyContactPhonesItemMax = 20;
+
+export const updateAdminEventSettingsBodyContactPhonesMin = 2;
+export const updateAdminEventSettingsBodyContactPhonesMax = 2;
+
 
 
 export const UpdateAdminEventSettingsBody = zod.object({
   "description": zod.string().min(updateAdminEventSettingsBodyDescriptionMin).max(updateAdminEventSettingsBodyDescriptionMax),
+  "eventDate": zod.coerce.date(),
   "registrationDeadline": zod.coerce.date(),
   "registrationOpen": zod.boolean(),
   "eligibility": zod.string().min(updateAdminEventSettingsBodyEligibilityMin).max(updateAdminEventSettingsBodyEligibilityMax),
@@ -420,7 +437,14 @@ export const UpdateAdminEventSettingsBody = zod.object({
   "date": zod.string().min(updateAdminEventSettingsBodyTimelineItemDateMin).max(updateAdminEventSettingsBodyTimelineItemDateMax),
   "title": zod.string().min(updateAdminEventSettingsBodyTimelineItemTitleMin).max(updateAdminEventSettingsBodyTimelineItemTitleMax),
   "detail": zod.string().min(updateAdminEventSettingsBodyTimelineItemDetailMin).max(updateAdminEventSettingsBodyTimelineItemDetailMax)
-})).max(updateAdminEventSettingsBodyTimelineMax)
+})).max(updateAdminEventSettingsBodyTimelineMax),
+  "domains": zod.array(zod.object({
+  "name": zod.enum(['AI & Machine Learning', 'Cybersecurity & Privacy', 'Healthcare & MedTech', 'AgriTech & Sustainability']),
+  "description": zod.string()
+})).min(updateAdminEventSettingsBodyDomainsMin).max(updateAdminEventSettingsBodyDomainsMax),
+  "contactEmail": zod.string().email(),
+  "contactPhones": zod.array(zod.string().min(updateAdminEventSettingsBodyContactPhonesItemMin).max(updateAdminEventSettingsBodyContactPhonesItemMax)).min(updateAdminEventSettingsBodyContactPhonesMin).max(updateAdminEventSettingsBodyContactPhonesMax),
+  "website": zod.string().url()
 })
 
 export const updateAdminEventSettingsResponseTimelineItemDateMin = 3;
@@ -449,7 +473,14 @@ export const UpdateAdminEventSettingsResponse = zod.object({
   "date": zod.string().min(updateAdminEventSettingsResponseTimelineItemDateMin).max(updateAdminEventSettingsResponseTimelineItemDateMax),
   "title": zod.string().min(updateAdminEventSettingsResponseTimelineItemTitleMin).max(updateAdminEventSettingsResponseTimelineItemTitleMax),
   "detail": zod.string().min(updateAdminEventSettingsResponseTimelineItemDetailMin).max(updateAdminEventSettingsResponseTimelineItemDetailMax)
-}))
+})),
+  "domains": zod.array(zod.object({
+  "name": zod.enum(['AI & Machine Learning', 'Cybersecurity & Privacy', 'Healthcare & MedTech', 'AgriTech & Sustainability']),
+  "description": zod.string()
+})),
+  "contactEmail": zod.string().email(),
+  "contactPhones": zod.array(zod.string()),
+  "website": zod.string().url()
 })
 
 

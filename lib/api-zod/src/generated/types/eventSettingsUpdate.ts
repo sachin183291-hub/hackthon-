@@ -5,6 +5,7 @@
  * Public and organizer API for SYNOHACK 2026.
  * OpenAPI spec version: 0.2.0
  */
+import type { DomainDetail } from './domainDetail';
 import type { TimelineItem } from './timelineItem';
 
 export interface EventSettingsUpdate {
@@ -13,6 +14,7 @@ export interface EventSettingsUpdate {
      * @maxLength 3000
      */
   description: string;
+  eventDate: Date;
   registrationDeadline: Date;
   registrationOpen: boolean;
   /**
@@ -28,4 +30,18 @@ export interface EventSettingsUpdate {
   rules: string[];
   /** @maxItems 20 */
   timeline: TimelineItem[];
+  /**
+     * @minItems 4
+     * @maxItems 4
+     */
+  domains: DomainDetail[];
+  contactEmail: string;
+  /**
+     * @minItems 2
+     * @maxItems 2
+     * @items.minLength 7
+     * @items.maxLength 20
+     */
+  contactPhones: string[];
+  website: string;
 }

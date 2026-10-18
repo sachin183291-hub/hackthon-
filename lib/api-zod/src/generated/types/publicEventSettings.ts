@@ -5,6 +5,7 @@
  * Public and organizer API for SYNOHACK 2026.
  * OpenAPI spec version: 0.2.0
  */
+import type { DomainDetail } from './domainDetail';
 import type { TimelineItem } from './timelineItem';
 
 export interface PublicEventSettings {
@@ -19,4 +20,8 @@ export interface PublicEventSettings {
   eligibility: string;
   rules: string[];
   timeline: TimelineItem[];
+  domains: DomainDetail[];
+  contactEmail: string;
+  contactPhones: string[];
+  website: string;
 }
