@@ -54,23 +54,79 @@ export const TopSponsorMarquee: React.FC = () => {
   const marqueeList = [...SPONSORS, ...SPONSORS, ...SPONSORS];
 
   return (
-    <section className="top-sponsor-marquee-section" aria-label="Official Event Sponsors and Technology Partners">
-      <div className="marquee-label-pill">
+    <div
+      className="top-sponsor-marquee-section"
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'nowrap',
+        alignItems: 'center',
+        overflow: 'hidden',
+        height: 56,
+        boxSizing: 'border-box',
+        width: '100%',
+        position: 'relative',
+        zIndex: 40,
+      }}
+      aria-label="Official Event Sponsors and Technology Partners"
+    >
+      <div
+        className="marquee-label-pill"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 8,
+          flexShrink: 0,
+          whiteSpace: 'nowrap',
+          height: '100%',
+        }}
+      >
         <span className="marquee-pulsing-dot" />
         <span className="marquee-label-text">PARTNERS & SPONSORS</span>
       </div>
 
-      <div className="marquee-outer-container">
-        <div className="marquee-track">
+      <div
+        className="marquee-outer-container"
+        style={{
+          flex: '1 1 auto',
+          minWidth: 0,
+          overflow: 'hidden',
+          display: 'flex',
+          alignItems: 'center',
+          position: 'relative',
+        }}
+      >
+        <div
+          className="marquee-track"
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'nowrap',
+            alignItems: 'center',
+            width: 'max-content',
+            gap: 28,
+          }}
+        >
           {marqueeList.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
               className="marquee-item-card"
+              style={{
+                display: 'inline-flex',
+                flexDirection: 'row',
+                flexWrap: 'nowrap',
+                alignItems: 'center',
+                gap: 14,
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+              }}
               title={`${item.badge} ${item.name}`}
             >
-              <div className="marquee-logo-box">{item.logo}</div>
-              <div className="marquee-item-content">
-                <div className="marquee-badge-row">
+              <div className="marquee-logo-box" style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                {item.logo}
+              </div>
+              <div className="marquee-item-content" style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <div className="marquee-badge-row" style={{ display: 'flex', alignItems: 'center' }}>
                   <span
                     className="marquee-badge"
                     style={{
@@ -81,7 +137,7 @@ export const TopSponsorMarquee: React.FC = () => {
                     {item.badge}
                   </span>
                 </div>
-                <div className="marquee-name-row">
+                <div className="marquee-name-row" style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
                   <strong
                     className="marquee-brand-name"
                     style={item.nameColor ? { color: item.nameColor } : undefined}
@@ -91,13 +147,13 @@ export const TopSponsorMarquee: React.FC = () => {
                   <span className="marquee-brand-sub">{item.subtitle}</span>
                 </div>
               </div>
-              <div className="marquee-item-separator" aria-hidden="true">
+              <div className="marquee-item-separator" aria-hidden="true" style={{ opacity: 0.3, margin: '0 4px' }}>
                 •
               </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
