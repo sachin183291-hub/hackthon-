@@ -14,4 +14,5 @@ export const HackathonDomain = {
   'Cybersecurity_&_Privacy': 'Cybersecurity & Privacy',
   'Healthcare_&_MedTech': 'Healthcare & MedTech',
   'AgriTech_&_Sustainability': 'AgriTech & Sustainability',
+  'Others': 'Others (Open Innovation)',
 } as const;

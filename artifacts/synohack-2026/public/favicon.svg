@@ -1,3 +1,17 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="synoGradFav" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stopColor="#0B2340" />
+      <stop offset="1" stopColor="#07182B" />
+    </linearGradient>
+    <linearGradient id="synoAccentFav" x1="12" y1="12" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stopColor="#65D52A" />
+      <stop offset="1" stopColor="#1684FF" />
+    </linearGradient>
+  </defs>
+  <rect x="2.5" y="2.5" width="43" height="43" rx="11" fill="url(#synoGradFav)" stroke="#65D52A" stroke-width="2" />
+  <circle cx="36" cy="13" r="2.5" fill="#65D52A" />
+  <circle cx="12" cy="35" r="2.2" fill="#1684FF" />
+  <path d="M32 17.5C30.5 15 27.5 13.5 24 13.5C18.5 13.5 15 17 15 21C15 27.5 33 24.5 33 30.5C33 34.5 29.5 37 24 37C19 37 15.5 34.5 14 31.5" stroke="url(#synoAccentFav)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="24" cy="25.5" r="2" fill="#FFFFFF" />
 </svg>

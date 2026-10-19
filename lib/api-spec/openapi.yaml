@@ -422,6 +422,7 @@ components:
         - Cybersecurity & Privacy
         - Healthcare & MedTech
         - AgriTech & Sustainability
+        - Others (Open Innovation)
     PaymentStatus:
       type: string
       enum: [Pending, Paid, Failed, Refunded]
