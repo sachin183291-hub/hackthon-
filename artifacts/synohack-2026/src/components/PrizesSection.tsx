@@ -147,7 +147,7 @@ export const PrizesSection: React.FC = () => {
               <div style={{ display: 'grid', gap: 10, marginBottom: 24, fontSize: 13, color: '#adc2d4' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 9 }}>
                   <CheckCircle2 size={16} color="var(--lime)" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span><strong>Direct Full-time Job Placement</strong> or Paid Internship Offer at Synovers Technologies</span>
+                  <span><strong>Direct Full-time Job Placement</strong> or Internship Offer at Synovers Technologies</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 9 }}>
                   <CheckCircle2 size={16} color="var(--lime)" style={{ flexShrink: 0, marginTop: 2 }} />
@@ -243,7 +243,7 @@ export const PrizesSection: React.FC = () => {
               <div style={{ display: 'grid', gap: 10, marginBottom: 24, fontSize: 13, color: '#adc2d4' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 9 }}>
                   <CheckCircle2 size={16} color="#38bdf8" style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span><strong>Direct Paid Internship Offer</strong> + Career Placement Interview at Synovers</span>
+                  <span><strong>Direct Internship Offer</strong> + Career Placement Interview at Synovers</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 9 }}>
                   <CheckCircle2 size={16} color="#38bdf8" style={{ flexShrink: 0, marginTop: 2 }} />
@@ -269,7 +269,7 @@ export const PrizesSection: React.FC = () => {
                 letterSpacing: '0.08em',
               }}
             >
-              PAID INTERNSHIP & CAREER TRACK
+              INTERNSHIP & CAREER TRACK
             </div>
           </div>
 
