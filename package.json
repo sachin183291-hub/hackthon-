@@ -2,14 +2,20 @@
   "name": "workspace",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
+    "start": "node server.mjs",
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "build:frontend": "pnpm --filter @workspace/synohack-2026 run build",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
   "private": true,
   "dependencies": {
     "@replit/connectors-sdk": "^0.4.3",
+    "express": "^5.2.1",
     "stripe": "^23.0.0",
     "stripe-replit-sync": "^1.0.0"
   },

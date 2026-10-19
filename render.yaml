@@ -1,0 +1,28 @@
+services:
+  # Static Site Deployment (Recommended on Render: 100% Free, Instant Global CDN, No sleep timeouts)
+  - type: static
+    name: synohack-2026
+    buildCommand: pnpm install && pnpm --filter @workspace/synohack-2026 run build
+    staticPublishPath: artifacts/synohack-2026/dist/public
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+
+  # Web Service Deployment (Node.js Express Server serving frontend and APIs)
+  - type: web
+    name: synohack-2026-server
+    runtime: node
+    plan: free
+    buildCommand: pnpm install && pnpm run build
+    startCommand: pnpm run start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
